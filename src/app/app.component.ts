@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {Observable} from "rxjs";
-import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-root',
@@ -9,9 +7,4 @@ import {AngularFirestore} from "@angular/fire/firestore";
 })
 export class AppComponent {
   title = 'angular-sandbox';
-
-  items: Observable<any[]>;
-  constructor(db: AngularFirestore) {
-    this.items = db.collection('users').valueChanges();
-  }
 }

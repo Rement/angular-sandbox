@@ -1,3 +1,54 @@
-<p>
-  signup works!
-</p>
+<form [formGroup]="signUpForm">
+    <div class="row">
+        <input type="text" id="firstName" autofocus placeholder="First name" formControlName="firstName"
+               [(ngModel)]="newUser.firstName" name="firstName">
+    </div>
+    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+        <div *ngIf="firstName.errors.required">
+            <span>First name is required</span>
+        </div>
+    </div>
+    <div class="row">
+        <input type="text" id="lastName" placeholder="Last name" formControlName="lastName"
+               [(ngModel)]="newUser.lastName" name="lastName">
+    </div>
+    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+        <div *ngIf="lastName.errors.required">
+            <span>Last name is required</span>
+        </div>
+    </div>
+    <div class="row">
+        <input type="text" id="email" placeholder="Email" formControlName="email" [(ngModel)]="newUser.email"
+               name="email">
+    </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+            <span>Email is required</span>
+        </div>
+        <div *ngIf="email.errors.email">
+            <span>Please, pull valid email</span>
+        </div>
+    </div>
+    <div class="row">
+        <input type="password" id="password" placeholder="Password" formControlName="password"
+               [(ngModel)]="newUser.password" name="password">
+    </div>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+        <div *ngIf="password.errors.required">
+            <span>Password is required</span>
+        </div>
+        <div *ngIf="password.errors.pattern">
+            <span>You should use at least 1 latin letter, 1 number and 1 capitalize letter. Password should be at least 8 characters long</span>
+        </div>
+    </div>
+    <div class="row">
+        <input type="password" id="confirmPassword" placeholder="Confirm password" formControlName="passwordConfirm"
+               [(ngModel)]="newUser.passwordConfirm" name="passwordConfirm">
+    </div>
+    <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)"
+         class="alert alert-danger">
+        <div *ngIf="passwordConfirm.errors.required">
+            <span>Put your password once more</span>
+        </div>
+    </div>
+</form>
